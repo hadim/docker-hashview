@@ -1,0 +1,6 @@
+{
+  "ip": "127.0.0.1",
+  "port": "4567",
+  "uuid": "0e566bcb-bb12-448f-a073-76e5b46c9cec",
+  "hc_binary_path": "/hashcat/hashcat.bin"
+}

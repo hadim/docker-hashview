@@ -1,0 +1,29 @@
+version: '3'
+services:
+
+  hashview:
+    container_name: hashview
+    build: .
+    environment:
+      - TZ=America/Toronto
+    ports:
+      - 4567
+    networks:
+      - hashview
+
+  db:
+    container_name: db
+    image: mysql:5.7
+    #command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./config/my.cnf:/etc/mysql/conf.d/my.cnf
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_USER=hashview
+      - MYSQL_DATABASE=hashview
+      - MYSQL_PASSWORD=hashview_password
+    networks:
+      - hashview
+
+networks:
+  hashview:

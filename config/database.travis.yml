@@ -1,0 +1,10 @@
+production:
+  adapter: mysql2
+  host: "db"
+  port: 3306
+  user: "hashview"
+  password: "hashview_password"
+  database: "hashview"
+  encoding: "utf8"
+  max_connections: 10
+  pool_timeout: 600

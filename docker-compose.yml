@@ -1,13 +1,16 @@
-version: '3'
+version: '2.3'
 services:
 
   hashview:
     container_name: hashview
     build: .
+    # Uncomment this if you use nvidia-docker2
+    # See https://github.com/NVIDIA/nvidia-docker
+    runtime: nvidia
     environment:
       - TZ=America/Toronto
     ports:
-      - 4567
+      - "4567:4567"
     networks:
       - hashview
 
@@ -19,11 +22,10 @@ services:
       - ./config/my.cnf:/etc/mysql/conf.d/my.cnf
     environment:
       - MYSQL_ROOT_PASSWORD=root_password
-      - MYSQL_USER=hashview
-      - MYSQL_DATABASE=hashview
-      - MYSQL_PASSWORD=hashview_password
     networks:
       - hashview
 
 networks:
   hashview:
+
+

@@ -2,7 +2,7 @@
 
 # Wait for database to be ready
 while ! mysqladmin ping -h db --silent; do
-    echo "* Waiting for database server to be up."
+    echo "* Waiting for database server to be up. Trying again in 5s."
     sleep 5s;
 done
 
@@ -15,7 +15,8 @@ DATABASE="hashview"
 TABLE="users"
 
 SQL_EXISTS=$(printf 'SHOW TABLES LIKE "%s"' "$TABLE")
-if [[ $(mysql -h $HOST -u $USERNAME -p$PASSWORD -e "$SQL_EXISTS" $DATABASE) ]]
+MYSQL_CMD=""
+if [[ $(mysql -h $HOST -u $USERNAME -p$PASSWORD -e "$SQL_EXISTS" $DATABASE 2> /dev/null) ]]
 then
     echo "* The hashview database is already initialized."
 else
@@ -23,7 +24,11 @@ else
     RACK_ENV=production TZ=$TZ bundle exec rake db:setup
 fi
 
+# This line is needed by Docker
+# to reresh or update the `config/agent_config.json`
+# file from host.
+cat config/agent_config.json
+
 # Start hashview.
 echo "* Starting hashview..."
-sleep 5s
 RACK_ENV=production TZ=$TZ foreman start

@@ -1,7 +1,5 @@
 # Docker image for hashview
 
-**This is a work in progress. Currently not working.**
-
 A Docker image for [Hashview](https://github.com/hashview/hashview).
 
 ## Usage

@@ -11,13 +11,14 @@ RUN apt update && apt install -y \
     nano \
     openssl \
     p7zip-full \
-    mysql-client
+    mysql-client \
+    redis-server
 
 # Install hashview
 RUN git clone https://github.com/hashview/hashview /hashview
 RUN cd /hashview && git checkout $HASVIEW_VERSION
 RUN cd /hashview && gem install bundler && bundle install
-COPY config/database.travis.yml /hashview/config/database.travis.yml
+COPY config/database.yml /hashview/config/database.yml
 
 # Install hashcat
 # RUN wget https://hashcat.net/beta/hashcat-5.1.0%2B789.7z

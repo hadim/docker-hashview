@@ -9,7 +9,7 @@ RUN apt update && apt install -y \
     nano \
     openssl \
     p7zip-full \
-    mysql-client \
+    mysql-client-* \
     redis-server
 
 ENV HASHVIEW_VERSION=v0.7.5-beta

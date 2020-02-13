@@ -13,7 +13,7 @@ RUN apt update && apt install -y \
     redis-server
 
 ENV HASHVIEW_VERSION=v0.7.5-beta
-ENV HASHCAT_VERSION=4.2.1
+ENV HASHCAT_VERSION=5.1.0
 
 # Install hashview
 RUN git clone https://github.com/hashview/hashview /hashview

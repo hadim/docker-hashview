@@ -22,8 +22,8 @@ RUN cd /hashview && gem install bundler && bundle install
 COPY config/database.yml /hashview/config/database.yml
 
 # Install hashcat
-RUN wget https://hashcat.net/beta/hashcat-5.1.0%2B800.7z
-RUN 7z x hashcat-5.1.0+800.7z -o/
+RUN wget https://hashcat.net/beta/hashcat-5.1.0%2B1671.7z
+RUN 7z x hashcat-5.1.0+1671.7z -o/
 RUN ln -s /hashcat-5.1.0 /hashcat
 #RUN wget https://github.com/hashcat/hashcat/releases/download/v$HASHCAT_VERSION/hashcat-$HASHCAT_VERSION.7z
 #RUN 7z x hashcat-$HASHCAT_VERSION.7z -o/
